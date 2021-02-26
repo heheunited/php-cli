@@ -5,3 +5,5 @@
 5. docker-compose exec php sh    #(php container)
 6. composer install
 7. php index.php au-gov word . For example: php index.php au-gov zxc
+
+File will be saved into /php/src/Storage/app/***
