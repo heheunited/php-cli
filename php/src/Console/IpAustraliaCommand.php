@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Console;
 
-use App\Services\ScrapService;
+use App\Services\ItemService;
 use App\Storage\Type\File;
 use Goutte\Client as GoutteClient;
 use GuzzleHttp\Client as GuzzleClient;
@@ -62,7 +62,7 @@ class IpAustraliaCommand extends Command
 
         $fileStorage = new File();
         $goutteClient = new GoutteClient();
-        $scrapService = new ScrapService();
+        $itemService = new ItemService();
         $filePath = storage_path(date('Y-m-d') . '_' . $word . '_crawler');
         $data = [];
         $page = 0;
@@ -92,10 +92,10 @@ class IpAustraliaCommand extends Command
             $htmlCrawler->filter('tbody > tr')->each(function (Crawler $item) use (
                 &$data,
                 &$totalCount,
-                $scrapService
+                $itemService
             ) {
                 ++$totalCount;
-                return $data[] = $scrapService->handle($item);
+                return $data[] = $itemService->handle($item);
             });
 
             $output->writeln("<comment>Page {$page} completed</comment>");

@@ -5,7 +5,7 @@ namespace App\Services;
 
 use Symfony\Component\DomCrawler\Crawler;
 
-class ScrapService
+class ItemService
 {
     /**
      * @param Crawler $item
@@ -28,15 +28,6 @@ class ScrapService
             'status' => $status,
             'details_page_url' => config('config')['host_name'] . $number['details_page_url'],
         ];
-    }
-
-    /**
-     * @param string $json
-     * @return string|string[]
-     */
-    public function prettyJsonData(string $json)
-    {
-        return str_replace(['[', ']'], ['', ','], $json);
     }
 
     /**
