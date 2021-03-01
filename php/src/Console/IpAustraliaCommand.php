@@ -98,8 +98,8 @@ class IpAustraliaCommand extends Command
                 return $data[] = $scrapService->handle($item);
             });
 
-            ++$page;
             $output->writeln("<comment>Page {$page} completed</comment>");
+            ++$page;
         }
 
         $scriptTime = round(microtime(true) - $start, 1);
